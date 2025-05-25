@@ -8,6 +8,8 @@
 
 package com.in28minutes.courses;
 
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="CourseDetails" type="{http://in28minutes.com/courses}CourseDetails"/&gt;
+ *         &lt;element name="CourseDetails" type="{http://in28minutes.com/courses}CourseDetails" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,34 +40,39 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "courseDetails"
 })
-@XmlRootElement(name = "GetCourseDetailsResponse")
-public class GetCourseDetailsResponse {
+@XmlRootElement(name = "GetAllCourseDetailsResponse")
+public class GetAllCourseDetailsResponse {
 
     @XmlElement(name = "CourseDetails", required = true)
-    protected CourseDetails courseDetails;
+    protected List<CourseDetails> courseDetails;
 
     /**
      * Gets the value of the courseDetails property.
      * 
-     * @return
-     *     possible object is
-     *     {@link CourseDetails }
-     *     
-     */
-    public CourseDetails getCourseDetails() {
-        return courseDetails;
-    }
-
-    /**
-     * Sets the value of the courseDetails property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the courseDetails property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CourseDetails }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCourseDetails().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CourseDetails }
+     * 
+     * 
      */
-    public void setCourseDetails(CourseDetails value) {
-        this.courseDetails = value;
+    public List<CourseDetails> getCourseDetails() {
+        if (courseDetails == null) {
+            courseDetails = new ArrayList<CourseDetails>();
+        }
+        return this.courseDetails;
     }
 
 }
